@@ -4,6 +4,7 @@ namespace console\controllers;
 
 use common\models\User;
 use Yii;
+use yii\console\Exception;
 use yii\helpers\VarDumper;
 
 
@@ -14,7 +15,9 @@ class TestController extends \yii\console\Controller
     {
         $user = new User();
         $user->username = 'test';
-        var_dump($user->save(false));
+        if(!$user->save(false)) {
+            throw  new Exception("Test failed: user was not created.");
+        }
 
         VarDumper::dump(['YII_DEBUG' => YII_DEBUG, 'YII_ENV' => YII_ENV]);
         echo PHP_EOL;
