@@ -25,9 +25,8 @@ class TestController extends \yii\console\Controller
         $count = 0;
         while (true) {
             $user = User::find()->one();
-            unset($user);
             $count++;
-            if ($count % 10000 == 0) {
+            if ($count % 1000 == 0) {
                 Yii::getLogger()->flush();
                 gc_collect_cycles();
                 echo memory_get_usage(), PHP_EOL;

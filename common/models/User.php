@@ -29,11 +29,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributes()
     {
         return [
+            'id',
             '_id',
+            'email',
             'username',
             'password_hash',
             'created_at',
             'updated_at',
+            'auth_key',
+            'status',
         ];
     }
 
